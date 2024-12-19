@@ -23,7 +23,7 @@ interface Symptom {
 
 interface HealthFormData {
   name: string;
-  temperature: number;
+  temperature: string | number;
   symptomIds: number[];
   contactWithSuspected: boolean;
   additionalNotes?: string;
@@ -52,17 +52,21 @@ export const HealthForm: React.FC = () => {
   }, []);
 
   const onFinish = async (values: HealthFormData) => {
+    const healthFormData = {
+      ...values,
+      temperature: +values.temperature,
+    };
     try {
       await axios.post(
         `${process.env.REACT_APP_API_URL}/health`,
-        values
+        healthFormData
       );
       api.success({
         message: "Form submitted successfully!",
       });
       form.resetFields();
-    } catch (error) {
-      api.error({ message: "Submission failed. Please try again." });
+    } catch (error: any) {
+      api.error({ message: error.response.data.message });
     }
   };
 
@@ -101,7 +105,13 @@ export const HealthForm: React.FC = () => {
                 { required: true, message: "Please enter your temperature!" },
               ]}
             >
-              <Input type="number" placeholder="Enter your temperature" />
+              <Input
+                min="15"
+                max="45"
+                step="0.1"
+                type="number"
+                placeholder="Enter your temperature"
+              />
             </Form.Item>
 
             <Form.Item
