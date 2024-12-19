@@ -42,7 +42,7 @@ services:
       dockerfile: Dockerfile
     container_name: health_declaration_frontend
     ports:
-      - "8080:80"
+      - "80:80"
     environment:
       REACT_APP_API_URL: http://backend:5000
       NODE_ENV: production
