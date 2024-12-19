@@ -38,7 +38,7 @@ export const HealthForm: React.FC = () => {
     const fetchSymptoms = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/symptoms`
+          `${process.env.REACT_APP_API_URL}/health/symptoms`
         );
         setSymptoms(response.data);
       } catch (error) {
@@ -54,7 +54,7 @@ export const HealthForm: React.FC = () => {
   const onFinish = async (values: HealthFormData) => {
     try {
       await axios.post(
-        `${process.env.REACT_APP_API_URL}/health-declarations`,
+        `${process.env.REACT_APP_API_URL}/health`,
         values
       );
       api.success({

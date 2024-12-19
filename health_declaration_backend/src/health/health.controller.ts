@@ -12,8 +12,8 @@ export class HealthController {
     return declaration;
   }
 
-  @Get()
+  @Get('/symptoms')
   findAll() {
-    return this.healthService.findHealthDeclaration();
+    return this.healthService.findSymptoms();
   }
 }

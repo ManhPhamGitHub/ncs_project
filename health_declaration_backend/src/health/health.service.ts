@@ -56,4 +56,8 @@ export class HealthService {
       ],
     });
   }
+
+  findSymptoms() {
+    return this.symptomRepository.find();
+  }
 }
