@@ -1,10 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { In, Repository } from 'typeorm';
 import { HealthDeclarationSymptom } from '../entities/health-declaration-symptom.entity';
 import { CreateHealthDeclarationDto } from './dto/create-health.dto';
-import { Symptom } from 'src/entities/symptom.entity';
-import { HealthDeclaration } from 'src/entities/health-declaration.entity';
+import { Symptom } from '../../src/entities/symptom.entity';
+import { HealthDeclaration } from '../../src/entities/health-declaration.entity';
 
 @Injectable()
 export class HealthService {
@@ -24,28 +24,23 @@ export class HealthService {
     const savedHealthDeclaration =
       await this.healthDeclarationRepository.save(healthDeclarationDto);
 
-    await Promise.all(
-      symptomIds.map(async (symptomId) => {
-        const symptom = await this.symptomRepository.findOne({
-          where: { id: symptomId },
-        });
+    const symptoms = await this.symptomRepository.findByIds(symptomIds);
+    if (symptoms.length !== symptomIds.length) {
+      throw new NotFoundException('symptom IDs are invalid.');
+    }
 
-        if (!symptom) return;
-
-        const healthDeclaration =
-          this.healthDeclarationRepository.create(healthDeclarationDto);
-
-        const healthDeclarationSymptomRecord =
-          this.healthDeclarationSymptomRepository.create({
-            healthDeclaration: savedHealthDeclaration,
-            symptom,
-          });
-
-        await this.healthDeclarationSymptomRepository.save(
-          healthDeclarationSymptomRecord,
-        );
+    const healthDeclarationSymptoms = symptoms.map((symptom) =>
+      this.healthDeclarationSymptomRepository.create({
+        healthDeclaration: savedHealthDeclaration,
+        symptom,
       }),
     );
+
+    await this.healthDeclarationSymptomRepository.save(
+      healthDeclarationSymptoms,
+    );
+
+    return savedHealthDeclaration;
   }
 
   findHealthDeclaration() {
@@ -55,9 +50,5 @@ export class HealthService {
         'healthDeclarationSymptoms.symptom',
       ],
     });
-  }
-
-  findSymptoms() {
-    return this.symptomRepository.find();
   }
 }

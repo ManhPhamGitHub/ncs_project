@@ -38,7 +38,7 @@ export const HealthForm: React.FC = () => {
     const fetchSymptoms = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/health/symptoms`
+          `${process.env.REACT_APP_API_URL}/symptoms`
         );
         setSymptoms(response.data);
       } catch (error) {
@@ -58,7 +58,7 @@ export const HealthForm: React.FC = () => {
     };
     try {
       await axios.post(
-        `${process.env.REACT_APP_API_URL}/health`,
+        `${process.env.REACT_APP_API_URL}/healths`,
         healthFormData
       );
       api.success({
@@ -71,21 +71,13 @@ export const HealthForm: React.FC = () => {
   };
 
   return (
-    <Row justify="center" style={{ padding: "20px" }}>
-      {contextHolder}
-
+    <Row justify="center" className="p-20">
       <Col xs={24} sm={20} md={16} lg={12}>
-        <Card
-          bordered={false}
-          style={{
-            borderRadius: "10px",
-            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-          }}
-        >
-          <Title level={3} style={{ textAlign: "center" }}>
+        <Card bordered={false} className="rounded-10 shadow-4">
+          <Title level={3} className="text-center">
             Health Declaration Form
           </Title>
-          <Paragraph style={{ textAlign: "center", marginBottom: "24px" }}>
+          <Paragraph className="text-center mb-24">
             Please fill out the form below with accurate information to help us
             ensure everyone's safety.
           </Paragraph>
@@ -105,13 +97,7 @@ export const HealthForm: React.FC = () => {
                 { required: true, message: "Please enter your temperature!" },
               ]}
             >
-              <Input
-                min="15"
-                max="45"
-                step="0.1"
-                type="number"
-                placeholder="Enter your temperature"
-              />
+              <Input type="number" placeholder="Enter your temperature" />
             </Form.Item>
 
             <Form.Item

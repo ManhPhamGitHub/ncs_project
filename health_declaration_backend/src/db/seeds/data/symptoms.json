@@ -1,0 +1,10 @@
+[
+  { "id": 1, "name": "Cough" },
+  { "id": 2, "name": "Fever" },
+  { "id": 3, "name": "Headache" },
+  { "id": 4, "name": "Fatigue" },
+  { "id": 5, "name": "Sore Throat" },
+  { "id": 6, "name": "Body Aches" },
+  { "id": 7, "name": "Runny Nose" },
+  { "id": 8, "name": "Breathing Difficulties" }
+]

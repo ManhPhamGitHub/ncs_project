@@ -2,7 +2,7 @@ import { Body, Controller, Get, Post } from '@nestjs/common';
 import { HealthService } from './health.service';
 import { CreateHealthDeclarationDto } from './dto/create-health.dto';
 
-@Controller('health')
+@Controller('healths')
 export class HealthController {
   constructor(private readonly healthService: HealthService) {}
 
@@ -10,10 +10,5 @@ export class HealthController {
   async createHealthDeclaration(@Body() dto: CreateHealthDeclarationDto) {
     const declaration = await this.healthService.createHealthDeclaration(dto);
     return declaration;
-  }
-
-  @Get('/symptoms')
-  findAll() {
-    return this.healthService.findSymptoms();
   }
 }
