@@ -3,8 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { In, Repository } from 'typeorm';
 import { HealthDeclarationSymptom } from '../entities/health-declaration-symptom.entity';
 import { CreateHealthDeclarationDto } from './dto/create-health.dto';
-import { Symptom } from '../../src/entities/symptom.entity';
-import { HealthDeclaration } from '../../src/entities/health-declaration.entity';
+import { HealthDeclaration } from '../entities/health-declaration.entity';
+import { Symptom } from '../entities/symptom.entity';
 
 @Injectable()
 export class HealthService {
