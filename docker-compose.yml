@@ -31,7 +31,7 @@ services:
       PORT: 5000
       CORS_ORIGIN: http://frontend:3000
     container_name: health_declaration_backend
-
+    image: manhpd12/health_declaration_backend:latest
     depends_on:
       - mysql
     networks:
@@ -45,10 +45,9 @@ services:
     container_name: health_declaration_frontend
     ports:
       - "80:80"
-    environment:
-      REACT_APP_BACKEND_URL: http://backend:5000/api/v1
     depends_on:
       - backend
+    image: manhpd12/health_declaration_frontend:latest
     networks:
       - app-network
 

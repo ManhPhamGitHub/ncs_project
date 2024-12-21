@@ -72,6 +72,7 @@ export const HealthForm: React.FC = () => {
 
   return (
     <Row justify="center" className="p-20">
+      {contextHolder}
       <Col xs={24} sm={20} md={16} lg={12}>
         <Card bordered={false} className="rounded-10 shadow-4">
           <Title level={3} className="text-center">
