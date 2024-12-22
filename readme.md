@@ -25,6 +25,8 @@ suspected to have/ has been diagnosed with Covid-19 within the last 14 days?
 - Dockerized for easy deployment
 
 - NGINX as a reverse proxy for the frontend
+  
+- Google cloud as a compute ( http://34.124.227.73 )
 
 
 ## Prerequisites
