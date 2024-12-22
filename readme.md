@@ -1,11 +1,10 @@
 
-# Health Declaration System
+# [Health Declaration System](http://34.124.227.73)
 Develop a simple health declaration form that accepts the following data: Name, Temperature,
 Do you have any of the following symptoms now or within the last 14 days: Cough, smell/test
 impairment, fever, breathing difficulties, body aches, headaches, fatigue, sore throat, diarrhea,
 runny nose(even if your symptoms are mild)?, Have you been in contact with anyone who is
 suspected to have/ has been diagnosed with Covid-19 within the last 14 days?
-
 
 ## Features
 
