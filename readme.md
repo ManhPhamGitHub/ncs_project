@@ -75,6 +75,7 @@ docker-compose down
 - Set DATABASE_URL=<your-database-url>
 - Run migrations : npm run migration:run
 - Run seed data : npm run seed:run 
+- Run application : npm run start:dev
 
 #### Frontend 
 
