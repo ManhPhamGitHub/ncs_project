@@ -65,6 +65,21 @@ The backend will seed the database automatically with symptoms during startup.
 
 docker-compose down
 
+### Running without Docker
+
+
+#### Backend
+
+- Preparing mysql database
+- Create .env file in health_declaration_backend
+- Set DATABASE_URL=<your-database-url>
+- Run migrations : npm run migration:run
+- Run seed data : npm run seed:run 
+
+#### Frontend 
+
+- Run application : npm run start
+
 ## API Reference
 
 #### Get all symptoms
