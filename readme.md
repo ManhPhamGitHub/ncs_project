@@ -26,7 +26,7 @@ suspected to have/ has been diagnosed with Covid-19 within the last 14 days?
 
 - NGINX as a reverse proxy for the frontend
   
-- Google cloud as a compute ( http://34.124.227.73 )
+- Google cloud as a compute
 
 
 ## Prerequisites
