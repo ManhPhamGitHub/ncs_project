@@ -1,5 +1,5 @@
 
-# [Health Declaration System](http://34.124.227.73)
+# [Health Declaration System]
 Develop a simple health declaration form that accepts the following data: Name, Temperature,
 Do you have any of the following symptoms now or within the last 14 days: Cough, smell/test
 impairment, fever, breathing difficulties, body aches, headaches, fatigue, sore throat, diarrhea,
